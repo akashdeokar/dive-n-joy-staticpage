@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dive N Joy Waterpark & Resort | PLAY • STAY • REJUVENATE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0284c7',
+                            dark: '#0369a1',
+                            light: '#38bdf8',
+                            accent: '#f59e0b',
+                            darkblue: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url('WhatsApp Image 2026-10-10 at 2.36.02 PM.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-accent selection:text-white">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand to-brand-accent rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand/30">
+                        <i class="fa-solid fa-water text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">Dive N Joy</span>
+                        <span class="block text-[10px] sm:text-xs font-semibold text-brand-accent tracking-widest uppercase">Waterpark & Resort</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Home</a>
+                    <a href="#about" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">About</a>
+                    <a href="#attractions" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Attractions</a>
+                    <a href="#dining" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Dining</a>
+                    <a href="#resort" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Resort Stay</a>
+                    <a href="#gallery" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Gallery</a>
+                    <a href="#location" class="text-slate-200 hover:text-brand-light font-medium text-sm transition-colors">Location</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="openBookingModal()" class="bg-gradient-to-r from-brand-accent to-amber-500 hover:from-amber-600 hover:to-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg shadow-brand-accent/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                        <i class="fa-solid fa-ticket mr-2"></i>Book Tickets
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-200 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Home</a>
+            <a href="#about" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">About</a>
+            <a href="#attractions" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Attractions</a>
+            <a href="#dining" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Dining</a>
+            <a href="#resort" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Resort Stay</a>
+            <a href="#gallery" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Gallery</a>
+            <a href="#location" class="block text-slate-200 hover:text-brand-light font-medium py-2 border-b border-slate-800/60" onclick="toggleMobileMenu()">Location</a>
+            <div class="pt-2">
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full bg-gradient-to-r from-brand-accent to-amber-500 text-slate-950 font-bold py-3 rounded-xl shadow-md text-center">
+                    <i class="fa-solid fa-ticket mr-2"></i>Book Tickets / Enquiry
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center relative z-10 w-full">
+            <div class="inline-flex items-center space-x-2 bg-brand/30 border border-brand/50 px-4 py-2 rounded-full text-brand-light font-semibold text-xs sm:text-sm mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-sparkles text-brand-accent"></i>
+                <span>PLAY • STAY • REJUVENATE</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                Beat the Heat at Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand-accent">Water Park!</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-300 mb-10 font-medium">
+                Experience thrilling water slides, refreshing guitar-shaped rain dance, delicious buffets, luxury resort stays, and unforgettable family moments in lush green surroundings.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto bg-brand-accent hover:bg-amber-500 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl shadow-brand-accent/30 text-lg transition-all transform hover:-translate-y-1">
+                    <i class="fa-solid fa-ticket mr-2"></i>Book Tickets Now
+                </button>
+                <a href="#attractions" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md font-semibold px-8 py-4 rounded-xl text-lg transition-all">
+                    Explore Attractions <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Quick Feature Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-16 pt-10 border-t border-white/10 max-w-5xl mx-auto">
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-water text-brand-light text-2xl mb-2"></i>
+                    <span class="text-white font-semibold text-sm">Waterpark Slides</span>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex flex-col items-center justify-center text-center">
+                    <div class="w-12 h-12 bg-slate-800/80 rounded-xl mb-2 overflow-hidden flex items-center justify-center">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM (1).jpeg" alt="Rain Dance" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-white font-semibold text-sm">Guitar Rain Dance</span>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-utensils text-brand-accent text-2xl mb-2"></i>
+                    <span class="text-white font-semibold text-sm">Delicious Dining</span>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-hotel text-brand-light text-2xl mb-2"></i>
+                    <span class="text-white font-semibold text-sm">Resort Stay</span>
+                </div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-white/10 col-span-2 md:col-span-1 flex flex-col items-center justify-center text-center">
+                    <i class="fa-solid fa-flag- checkered text-brand-accent text-2xl mb-2"></i>
+                    <span class="text-white font-semibold text-sm">Go-Kart Track</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand font-bold text-sm tracking-wider uppercase bg-brand/10 px-3 py-1 rounded-full">Welcome to Paradise</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-6 leading-tight">
+                        Your Ultimate Destination for Fun, Food & Relaxation
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        Nestled in lush green surroundings, <strong class="text-slate-900">Dive N Joy Waterpark & Resort</strong> offers a perfect weekend getaway or holiday escape. Whether you are looking to plunge down thrilling water slides, dance to energetic beats in our unique guitar-shaped rain dance zone, or race on our adrenaline-pumping go-kart track, we have something special for every member of the family.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-brand/10 rounded-2xl flex items-center justify-center text-brand flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Safe & Clean</h4>
+                                <p class="text-slate-600 text-sm mt-1">Rigorous water purification and hygienic changing rooms for your family's safety.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-brand-accent/10 rounded-2xl flex items-center justify-center text-amber-600 flex-shrink-0">
+                                <i class="fa-solid fa-tree text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Green Surroundings</h4>
+                                <p class="text-slate-600 text-sm mt-1">Immerse yourself in tranquil nature away from city chaos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="border-l-4 border-brand pl-4">
+                            <p class="text-2xl font-black text-slate-900">100%</p>
+                            <p class="text-sm font-semibold text-slate-500">Family Entertainment</p>
+                        </div>
+                        <div class="border-l-4 border-brand-accent pl-4">
+                            <p class="text-2xl font-black text-slate-900">Open All Week</p>
+                            <p class="text-sm font-semibold text-slate-500">Daily Fun & Joy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.02 PM.jpeg" alt="Resort Entrance" class="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-slate-900 text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-slate-800">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center text-slate-950 font-bold text-xl">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-semibold uppercase">Top Rated Destination</p>
+                                <p class="text-lg font-bold">Unmatched Hospitality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="attractions" class="py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand font-bold text-sm tracking-wider uppercase bg-brand/10 px-3 py-1 rounded-full">Thrill & Excitement</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-4">Explore Our Zones & Attractions</h2>
+                <p class="text-slate-600 text-lg">From high-speed water slides to kids' special rain dance zones and adventure tracks, excitement awaits at every corner.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Main Water Park -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col group hover:shadow-2xl transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.02 PM (1).jpeg" alt="Water Slides" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            Water Park
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">Exciting Water Slides & Main Pool</h3>
+                            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                                Plunge into crystal clear waters down our thrilling multi-lane water slides or relax in our massive main wave & leisure pool.
+                            </p>
+                        </div>
+                        <button onclick="openBookingModal()" class="w-full bg-brand/10 hover:bg-brand text-brand hover:text-white font-bold py-3 rounded-xl transition-colors">
+                            Book Water Park Access <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Kids Rain Dance -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col group hover:shadow-2xl transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM (1).jpeg" alt="Guitar Rain Dance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-brand-accent text-slate-950 text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            Family Favorite
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">Guitar-Shaped Rain Dance Zone</h3>
+                            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                                Groove to high-energy chartbuster music under overhead showers in our signature guitar-designed safe zone for kids and adults alike.
+                            </p>
+                        </div>
+                        <button onclick="openBookingModal()" class="w-full bg-brand/10 hover:bg-brand text-brand hover:text-white font-bold py-3 rounded-xl transition-colors">
+                            Experience Rain Dance <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Go-Karting -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col group hover:shadow-2xl transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM (1).jpeg" alt="Go-Kart Racing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            Adventure Track
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">Go-Kart Racing & Adventure Track</h3>
+                            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                                Feel the rush of adrenaline on our professional go-kart track. Race with your friends and family for the ultimate championship title!
+                            </p>
+                        </div>
+                        <button onclick="openBookingModal()" class="w-full bg-brand/10 hover:bg-brand text-brand hover:text-white font-bold py-3 rounded-xl transition-colors">
+                            Try Go-Karting <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Slides & Pools 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col group hover:shadow-2xl transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM.jpeg" alt="Slides and Pools" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            Aquatic Fun
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">High-Speed Splash Slides</h3>
+                            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                                Test your bravery on our twisty tube slides that drop you straight into cool, refreshing splash pools.
+                            </p>
+                        </div>
+                        <button onclick="openBookingModal()" class="w-full bg-brand/10 hover:bg-brand text-brand hover:text-white font-bold py-3 rounded-xl transition-colors">
+                            Book Tickets <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5: Changing Rooms -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 flex flex-col group hover:shadow-2xl transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM (2).jpeg" alt="Changing Rooms" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-slate-800 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            Facility
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">Hygienic Changing Rooms</h3>
+                            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+                                Well-maintained, spacious, and secure gents and ladies changing facilities with lockers and clean washrooms for absolute convenience.
+                            </p>
+                        </div>
+                        <div class="bg-slate-100 py-3 rounded-xl text-center text-slate-600 font-semibold text-sm">
+                            <i class="fa-solid fa-check-circle text-green-600 mr-2"></i>Separated Gents & Ladies Facilities
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Resort Stay Highlight -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl overflow-hidden shadow-xl border border-slate-800 flex flex-col justify-between p-8 text-white">
+                    <div>
+                        <span class="bg-brand-accent text-slate-950 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Stay & Celebrate</span>
+                        <h3 class="text-3xl font-extrabold mt-4 mb-4">Resort Stay & Banquet Hall</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Extend your joy with our comfortable rooms and host your dream weddings, birthday parties, and corporate events in our grand banquet hall.
+                        </p>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-brand-accent hover:bg-amber-500 text-slate-950 font-bold py-3 rounded-xl transition-all">
+                        Enquire for Stay & Events <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dining" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM (2).jpeg" alt="Buffet Spread" class="rounded-2xl shadow-lg w-full h-56 object-cover hover:scale-105 transition-transform duration-300">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM.jpeg" alt="Dining Crowd" class="rounded-2xl shadow-lg w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM (3).jpeg" alt="Delicious Food" class="rounded-2xl shadow-lg w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                        <div class="bg-gradient-to-tr from-brand to-brand-dark p-6 rounded-2xl text-white shadow-lg flex flex-col justify-center items-center text-center">
+                            <i class="fa-solid fa-face-smile text-brand-accent text-3xl mb-2"></i>
+                            <h4 class="text-xl font-bold">Good Food, Happy Mood</h4>
+                            <p class="text-xs text-slate-200 mt-1">Freshly prepared snacks & lavish buffets</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-brand font-bold text-sm tracking-wider uppercase bg-brand/10 px-3 py-1 rounded-full">Taste & Delights</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-6 leading-tight">
+                        Feast Your Senses at Our Restaurant & Cafeteria
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        After splashing in the pools or racing on tracks, refuel your energy with our delicious culinary offerings. From mouth-watering Indian snacks to sumptuous buffet spreads, our restaurant serves hygienically prepared dishes crafted by expert chefs.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <span class="text-slate-800 font-semibold">Lavish Buffet Spreads & Continental Treats</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <span class="text-slate-800 font-semibold">Hygienic Cafeteria for Quick Bites & Refreshments</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <span class="text-slate-800 font-semibold">Spacious Family Seating Ambiance</span>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal()" class="bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand/20 transition-all">
+                        <i class="fa-solid fa-utensils mr-2"></i>Explore Food Menu & Packages
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resort" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-accent font-bold text-sm tracking-wider uppercase bg-brand-accent/10 px-3 py-1 rounded-full">Stay & Celebrate</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 mb-4">Luxury Resort Stay & Grand Banquet</h2>
+                <p class="text-slate-300 text-lg">Make your celebrations unforgettable and your weekends peaceful with our top-tier hospitality.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Resort Rooms -->
+                <div class="bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-slate-700/80 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand/20 text-brand-light rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-bed"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4">Comfortable Resort Stay</h3>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            Unwind in our air-conditioned, well-furnished resort rooms surrounded by greenery. Perfect for families looking for a peaceful night after a fun-filled day at the waterpark.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-slate-300">
+                            <li><i class="fa-solid fa-check text-brand-light mr-3"></i>Modern Amenities & Clean Interiors</li>
+                            <li><i class="fa-solid fa-check text-brand-light mr-3"></i>Exclusive Waterpark Access Included</li>
+                            <li><i class="fa-solid fa-check text-brand-light mr-3"></i>24/7 Room Service & Security</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl transition-all">
+                        Book Room Stay
+                    </button>
+                </div>
+
+                <!-- Banquet Hall -->
+                <div class="bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-slate-700/80 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-accent/20 text-brand-accent rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4">Grand Banquet Hall</h3>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            Host weddings, receptions, birthday parties, anniversary celebrations, and corporate retreats in our spacious, elegantly designed banquet hall.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-slate-300">
+                            <li><i class="fa-solid fa-check text-brand-accent mr-3"></i>Spacious Indoor & Outdoor Lawn Setup</li>
+                            <li><i class="fa-solid fa-check text-brand-accent mr-3"></i>Customizable Catering & Decor Services</li>
+                            <li><i class="fa-solid fa-check text-brand-accent mr-3"></i>Ample Parking & Dedicated Event Staff</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-brand-accent hover:bg-amber-500 text-slate-950 font-bold py-4 rounded-xl transition-all">
+                        Enquire for Events
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand font-bold text-sm tracking-wider uppercase bg-brand/10 px-3 py-1 rounded-full">Visual Journey</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-4">Moments at Dive N Joy</h2>
+                <p class="text-slate-600 text-lg">Click on any image to view it in full screen glory.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.02 PM.jpeg', 'Resort Entrance Gate')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.02 PM.jpeg" alt="Entrance Gate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Entrance Gate</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.02 PM (1).jpeg', 'Main Water Park & Slides')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.02 PM (1).jpeg" alt="Water Park" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Water Slides</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.03 PM.jpeg', 'Aquatic Slides & Pools')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM.jpeg" alt="Slides" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Pool & Slides</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.03 PM (1).jpeg', 'Guitar Rain Dance Zone')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM (1).jpeg" alt="Rain Dance" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Rain Dance</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.03 PM (2).jpeg', 'Buffet Spread')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.03 PM (2).jpeg" alt="Buffet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Buffet Spread</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.04 PM.jpeg', 'Dining Area')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM.jpeg" alt="Dining" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Dining Area</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.04 PM (1).jpeg', 'Go-Karting Track')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM (1).jpeg" alt="Go-Kart" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Go-Kart Track</span>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer h-64" onclick="openLightbox('WhatsApp Image 2026-10-10 at 2.36.04 PM (2).jpeg', 'Changing Rooms')">
+                    <img src="WhatsApp Image 2026-10-10 at 2.36.04 PM (2).jpeg" alt="Changing Rooms" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-sm font-bold"><i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Changing Rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand font-bold text-sm tracking-wider uppercase bg-brand/10 px-3 py-1 rounded-full">Find Us</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-4">Location & Directions</h2>
+                <p class="text-slate-600 text-lg">Easily accessible by road. Plan your drive to Dive N Joy Waterpark & Resort today.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Address Card -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-brand/10 text-brand rounded-2xl flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Dive N Joy Waterpark & Resort</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Surrounded by lush green landscapes, offering effortless connectivity and ample parking space for cars and buses.
+                        </p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start space-x-3 text-slate-700">
+                                <i class="fa-solid fa-phone text-brand mt-1"></i>
+                                <div>
+                                    <p class="font-bold text-sm">Call Us For Bookings</p>
+                                    <p class="text-sm text-slate-600">+91 98765 43210 / +91 91234 56789</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 text-slate-700">
+                                <i class="fa-solid fa-envelope text-brand mt-1"></i>
+                                <div>
+                                    <p class="font-bold text-sm">Email Support</p>
+                                    <p class="text-sm text-slate-600">info@divenjoyresort.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 text-slate-700">
+                                <i class="fa-solid fa-clock text-brand mt-1"></i>
+                                <div>
+                                    <p class="font-bold text-sm">Opening Hours</p>
+                                    <p class="text-sm text-slate-600">Monday - Sunday: 9:30 AM – 6:30 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://maps.app.goo.gl/wj27PgB2q9MnsD399" target="_blank" rel="noopener noreferrer" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-xl text-center shadow-lg shadow-brand/20 transition-all block">
+                        <i class="fa-solid fa-map-location-dot mr-2"></i>Open in Google Maps
+                    </a>
+                </div>
+
+                <!-- Google Map Embed -->
+                <div class="lg:col-span-2 bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200 h-[450px] lg:h-auto">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.9!2d73.85!3d18.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x!2sDive+N+Joy+Waterpark+%26+Resort!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Dive N Joy Waterpark & Resort Location">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Col 1 -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-white">
+                            <i class="fa-solid fa-water text-xl"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">Dive N Joy</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                        PLAY • STAY • REJUVENATE. The ultimate waterpark, resort, and banquet destination for unforgettable memories.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-slate-900 hover:bg-brand hover:text-white rounded-full flex items-center justify-center text-slate-300 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-900 hover:bg-brand hover:text-white rounded-full flex items-center justify-center text-slate-300 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-900 hover:bg-brand hover:text-white rounded-full flex items-center justify-center text-slate-300 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-900 hover:bg-brand hover:text-white rounded-full flex items-center justify-center text-slate-300 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-brand-light transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-light transition-colors">About Us</a></li>
+                        <li><a href="#attractions" class="hover:text-brand-light transition-colors">Water Park & Attractions</a></li>
+                        <li><a href="#dining" class="hover:text-brand-light transition-colors">Dining & Restaurant</a></li>
+                        <li><a href="#resort" class="hover:text-brand-light transition-colors">Resort Stay & Banquets</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Attractions & Zones</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#attractions" class="hover:text-brand-light transition-colors">Exciting Water Slides</a></li>
+                        <li><a href="#attractions" class="hover:text-brand-light transition-colors">Guitar Rain Dance</a></li>
+                        <li><a href="#attractions" class="hover:text-brand-light transition-colors">Go-Kart Adventure Track</a></li>
+                        <li><a href="#attractions" class="hover:text-brand-light transition-colors">Changing Rooms Facility</a></li>
+                        <li><a href="#location" class="hover:text-brand-light transition-colors">Google Map Directions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Newsletter & Offers</h4>
+                    <p class="text-sm text-slate-400 mb-4">Subscribe to receive exclusive weekend discount coupons and special package updates.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Thank you for subscribing!');" class="space-y-3">
+                        <input type="email" placeholder="Enter your email" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand">
+                        <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl text-sm transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Dive N Joy Waterpark & Resort. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-400">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking / Inquiry Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 w-10 h-10 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-600 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="mb-6">
+                <span class="text-brand font-bold text-xs uppercase tracking-wider bg-brand/10 px-3 py-1 rounded-full">Instant Reservation</span>
+                <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Book Tickets / Stay Inquiry</h3>
+                <p class="text-slate-600 text-sm">Fill in your details and our team will get in touch instantly.</p>
+            </div>
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                    <input type="text" id="b-name" required placeholder="Enter your full name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                        <input type="tel" id="b-phone" required placeholder="10-digit mobile no" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Service Type</label>
+                        <select id="b-service" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand">
+                            <option value="Waterpark Tickets">Waterpark Tickets</option>
+                            <option value="Resort Stay">Resort Stay Room</option>
+                            <option value="Banquet Hall Event">Banquet Hall Event</option>
+                            <option value="Go-Kart & Adventure">Go-Kart & Adventure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Visit Date</label>
+                        <input type="date" id="b-date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Number of Guests</label>
+                        <input type="number" id="b-guests" min="1" value="2" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Special Requirements (Optional)</label>
+                    <textarea id="b-notes" rows="2" placeholder="Mention food preferences or event details..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-accent hover:bg-amber-500 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition-all">
+                    Submit Booking Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-5xl max-h-[90vh] w-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-brand-accent text-3xl font-bold focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Zoomed view" class="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border border-slate-800">
+            <p id="lightbox-caption" class="text-white font-semibold text-lg mt-4 text-center"></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-slate-800 transform translate-y-32 opacity-0 transition-all duration-300 flex items-center space-x-3">
+        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+            <i class="fa-solid fa-check text-sm"></i>
+        </div>
+        <div>
+            <p class="font-bold text-sm" id="toast-title">Success!</p>
+            <p class="text-xs text-slate-400" id="toast-msg">Your request has been recorded.</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-950/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-slate-950/95', 'shadow-lg');
+            }
+        });
+
+        // Booking Modal Controls
+        const bookingModal = document.getElementById('booking-modal');
+
+        function openBookingModal() {
+            bookingModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('b-name').value;
+            closeBookingModal();
+            showToast('Thank you, ' + name + '!', 'Your booking request has been submitted successfully. We will call you shortly.');
+            e.target.reset();
+        }
+
+        // Lightbox Controls
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightboxModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toast Notification Function
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            if(msg) document.getElementById('toast-msg').textContent = msg;
+            
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
